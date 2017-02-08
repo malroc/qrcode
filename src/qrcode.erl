@@ -21,7 +21,7 @@
 -export([init/1, encode/1, encode/2, decode/1]).
 
 %%% Server function
-start() -> {ok, _}.
+start() -> {ok, 'Qrcode started!'}.
 
 %%
 decode(_Bin) ->
