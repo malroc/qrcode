@@ -10,5 +10,5 @@ start_link() ->
 init([]) ->
     {ok, {{one_for_one, 1, 5},
           [{console,
-            {qrcode, start_link, []},
+            {qrcode, start, []},
             permanent, 5000, worker, [qrcode]}]}}.
