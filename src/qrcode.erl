@@ -50,8 +50,9 @@ stop() ->
 %%====================================================================
 %% gen_server callbacks
 %%====================================================================
-init([Pars]) ->
-    io:format("Initializing with ~p~n",[Pars]),
+%%init([Pars]) ->
+    %%io:format("Initializing with ~p~n",[Pars]),
+init([]) ->
     process_flag(trap_exit, true),
     {ok, initialized}.
 
