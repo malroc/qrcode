@@ -7,3 +7,5 @@
 *.png
 test/*
 work/*
+
+_build/*
