@@ -2,7 +2,7 @@ defmodule QRCode.Mixfile do
   use Mix.Project
   def project do
     [app: :qrcode,
-     version: "0.0.1",
+     version: "0.0.2",
      language: :erlang,
      deps: deps]
   end
