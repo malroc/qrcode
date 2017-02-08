@@ -31,50 +31,34 @@
          terminate/2, 
          code_change/3]).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GEN-SERVER-STUFF-END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GEN-SERVER-STUFF-START %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%====================================================================
 %% Server interface
 %%====================================================================
 %% Booting server (and linking to it)
 start() -> 
-    %%io:format("Starting with ~p~n",[Pars]),
-    %%gen_server:start_link({local, ?MODULE}, ?MODULE, [Pars], []).
+    io:format("QR Code starting~n"),
     gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
 
 %% Stopping server asynchronously
 stop() ->
-    io:format("Stopping~n"),
+    io:format("QR Code stopping~n"),
     gen_server:cast(?MODULE, shutdown).
 
 %%====================================================================
 %% gen_server callbacks
 %%====================================================================
-%%init([Pars]) ->
-    %%io:format("Initializing with ~p~n",[Pars]),
 init([]) ->
     process_flag(trap_exit, true),
     {ok, initialized}.
 
-%% Synchronous, possible return values  
-% {reply,Reply,NewState} 
-% {reply,Reply,NewState,Timeout}
-% {reply,Reply,NewState,hibernate}
-% {noreply,NewState}
-% {noreply,NewState,Timeout}
-% {noreply,NewState,hibernate}
-% {stop,Reason,Reply,NewState} 
-% {stop,Reason,NewState}
+%% Synchronous
 handle_call(Message, From, State) -> 
     io:format("Generic call handler: '~p' from '~p' while in '~p'~n",[Message, From, State]),
     {reply, ok, State}.
 
-%% Asynchronous, possible return values
-% {noreply,NewState} 
-% {noreply,NewState,Timeout}
-% {noreply,NewState,hibernate}
-% {stop,Reason,NewState}
-%% normal termination clause
+%% Asynchronous
 handle_cast(shutdown, State) ->
     io:format("Generic cast handler: *shutdown* while in '~p'~n",[State]),
     {stop, normal, State};
@@ -84,10 +68,6 @@ handle_cast(Message, State) ->
     {noreply, State}.
 
 %% Informative calls
-% {noreply,NewState} 
-% {noreply,NewState,Timeout} 
-% {noreply,NewState,hibernate}
-% {stop,Reason,NewState}
 handle_info(_Message, _Server) -> 
     io:format("Generic info handler: '~p' '~p'~n",[_Message, _Server]),
     {noreply, _Server}.
