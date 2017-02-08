@@ -13,10 +13,12 @@
 % limitations under the License.
 
 -module(qrcode).
+-behaviour(gen_server).
+
 -include("qrcode.hrl").
 -include("qrcode_params.hrl").
 
--behaviour(gen_server).
+-export([encode/1, encode/2, decode/1]).
 
 % interface calls
 -export([start/1, stop/0]).
@@ -28,6 +30,8 @@
          handle_info/2, 
          terminate/2, 
          code_change/3]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GEN-SERVER-STUFF-END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%====================================================================
 %% Server interface
@@ -94,8 +98,7 @@ terminate(_Reason, _Server) ->
 %% Code change
 code_change(_OldVersion, _Server, _Extra) -> {ok, _Server}.
 
-
--export([encode/1, encode/2, decode/1]).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% GEN-SERVER-STUFF-END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%
 decode(_Bin) ->
