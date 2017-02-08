@@ -8,7 +8,8 @@ start_link() ->
     supervisor:start_link(?MODULE, []).
 
 init([]) ->
-    AChild = {?SERVER, {stateful,start_link,[]}, permanent, 2000, worker, [qrcode]}
-    {ok, {{one_for_one, 1, 5},
-            [AChild]
+    {ok, {{one_for_one, 1, 60},
+        [
+            {qrcode, {qrcode, start_link, []}, permanent, brutal_kill, worker, [qrcode]}
+        ]
     }}.
