@@ -18,7 +18,7 @@
 -include("qrcode_params.hrl").
 
 -export([start/0]).
--export([init/1, encode/1, encode/2, decode/1]).
+-export([encode/1, encode/2, decode/1]).
 
 %%% Server function
 start() -> {ok, 'Qrcode started!'}.
