@@ -10,6 +10,6 @@ start_link() ->
 init([]) ->
     {ok, {{one_for_one, 1, 60},
         [
-            {qrcode, {qrcode, start_link, []}, permanent, brutal_kill, worker, [qrcode]}
+            {qrcode, {qrcode, start, []}, permanent, brutal_kill, worker, [qrcode]}
         ]
     }}.
