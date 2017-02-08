@@ -37,9 +37,11 @@
 %% Server interface
 %%====================================================================
 %% Booting server (and linking to it)
-start(Pars) -> 
-    io:format("Starting with ~p~n",[Pars]),
-    gen_server:start_link({local, ?MODULE}, ?MODULE, [Pars], []).
+start() -> 
+    %%io:format("Starting with ~p~n",[Pars]),
+    %%gen_server:start_link({local, ?MODULE}, ?MODULE, [Pars], []).
+    io:format("Starting with ~p~n",[]),
+    gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
 
 %% Stopping server asynchronously
 stop() ->
