@@ -13,18 +13,19 @@
 % limitations under the License.
 
 -module(qrcode).
+-behaviour(gen_server).
 
 -include("qrcode.hrl").
 -include("qrcode_params.hrl").
 
 -export([start_link/0]).
 
--export([encode/1, encode/2, decode/1]).
+-export([init/1, encode/1, encode/2, decode/1]).
 
-start_link() -> spawn_link(fun init/0).
+start() -> gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
 
 %%% Server functions
-init() -> loop([]).
+init([]) -> {ok, _}.
 
 %%
 decode(_Bin) ->
