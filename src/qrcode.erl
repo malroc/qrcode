@@ -21,7 +21,7 @@
 -export([encode/1, encode/2, decode/1]).
 
 % interface calls
--export([start/1, stop/0]).
+-export([start/0, stop/0]).
     
 % gen_server callbacks
 -export([init/1,
