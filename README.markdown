@@ -6,9 +6,14 @@ Reference used was ISO/IEC 18004, 1st Edition (2000)
 This implementation is informed by my specific needs, i.e. to provide
 two-factor authentication for mobile phones running Google Authenticator.
 
++ This is a ***forked version from Gitlab***: https://gitlab.com/Pacodastre/qrcode.git
++ This forked version has been wrapped with OTP/Genserver/Supervisor so that it can be used in Elixir / Phoenix
++ All deps in Elixir/Phoenix (release deployment) must be supervised by OTP
 + "Byte" mode only (don't need e.g. numeric mode or kanji mode).
 + Encode only (no detection/decode).
 + Basic supporting library functions provided (HOTP, PNG image functions) to allow full-cyle demo.
+
+
 
 Demo
 ====
@@ -34,7 +39,7 @@ Add :qrcode to `mix.deps`
 ::
 
     defp deps do
-      [{:qrcode, git: “git@gitlab.com:Pacodastre/qrcode.git”}]
+      [{:qrcode, "~> 1.0.4", git: "git@github.com:netflakes/qrcode.git"}]
     end
 
 Then run:
@@ -53,3 +58,4 @@ Then, whenever you have this compiled, you should have access to the functions a
      iex(3)> :file.write_file(“example.png”, png)
      :ok
 
+NB: Add the library to the list of supervised applications in Elixir to be able to deploy it to production!
