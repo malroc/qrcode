@@ -22,6 +22,9 @@
 
 -export([encode/1, encode/2, decode/1]).
 
+-export([init/1, terminate/3, code_change/4, % setup/teardown/upgrade
+         handle_event/3, handle_sync_event/4, handle_info/3). % global events
+
 start_link() ->
 	gen_fsm:start_link(?MODULE, [], []).
 
