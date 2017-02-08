@@ -17,7 +17,7 @@
 -include("qrcode.hrl").
 -include("qrcode_params.hrl").
 
--export([start/0]).
+-export([loop/0]).
 -export([encode/1, encode/2, decode/1]).
 
 %%% Server function
