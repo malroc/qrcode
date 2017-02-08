@@ -8,7 +8,4 @@ start_link() ->
     supervisor:start_link(?MODULE, []).
 
 init([]) ->
-    {ok, {{one_for_one, 1, 5},
-          [{console,
-            {qrcode, start_link, []},
-            permanent, 5000, worker, [qrcode]}]}}.
+    {ok, {{one_for_one, 1, 5}, [qrcode]}}.

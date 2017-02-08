@@ -13,7 +13,6 @@
 % limitations under the License.
 
 -module(qrcode).
--behaviour(gen_fsm).
 
 -include("qrcode.hrl").
 -include("qrcode_params.hrl").
@@ -22,8 +21,10 @@
 
 -export([encode/1, encode/2, decode/1]).
 
-start_link() ->
-	gen_fsm:start_link(?MODULE, [], []).
+start_link() -> spawn_link(fun init/0).
+
+%%% Server functions
+init() -> loop([]).
 
 %%
 decode(_Bin) ->
