@@ -40,7 +40,7 @@
 start() -> 
     %%io:format("Starting with ~p~n",[Pars]),
     %%gen_server:start_link({local, ?MODULE}, ?MODULE, [Pars], []).
-    io:format("Starting with ~p~n",[]),
+    io:format("Starting with ~p~n",["1","2"]),
     gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
 
 %% Stopping server asynchronously
