@@ -26,6 +26,28 @@ start_link() ->
 	gen_fsm:start_link(?MODULE, [], []).
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% GEN_FSM CALLBACKS %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+init([]) ->
+	ok.
+
+terminate(_Reason, _StateName, _State) ->
+	ok.
+
+code_change(_OldVsn, StateName, State, _Extra) ->
+	{ok, StateName, State}.
+
+handle_info(_Event, StateName, State) ->
+	{next_state, StateName, State}.
+
+handle_event(_Event, StateName, State) ->
+	{next_state, StateName, State}.
+
+handle_sync_event(_Event, _From, StateName, State) ->
+	{next_state, StateName, State}.
+
 %%
 decode(_Bin) ->
 	{error, not_implemented}.
